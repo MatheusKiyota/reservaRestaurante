@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite"
+  provider = "sqlite" // ou "postgresql" / "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -7,20 +7,32 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Reserva {
-  id        Int      @id @default(autoincrement())
-  clienteId Int
-  data      DateTime
-  mesa      Int
-  cliente   Cliente  @relation(fields: [clienteId], references: [id])
-}
-
-model Cliente {
+model Usuario {
   id       Int       @id @default(autoincrement())
   nome     String
   email    String    @unique
-  senha    String
-  isAdmin  Boolean   @default(false)
+  password String
+  tipo     String    // "cliente" ou "adm"
+
   reservas Reserva[]
 }
 
+model Reserva {
+  id         Int      @id @default(autoincrement())
+  usuario_id Int
+  mesa_id    Int
+  data       DateTime
+  n_pessoas  Int
+  status     Boolean  @default(false)
+
+  usuario Usuario @relation(fields: [usuario_id], references: [id])
+  mesa    Mesa    @relation(fields: [mesa_id], references: [id])
+}
+
+model Mesa {
+  id        Int       @id @default(autoincrement())
+  codigo    String
+  n_lugares Int
+
+  reservas Reserva[]
+}

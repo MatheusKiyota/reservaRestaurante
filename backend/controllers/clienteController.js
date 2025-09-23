@@ -96,11 +96,12 @@ class ClienteController {
     });
 
     if (!cliente.isAdmin) {
-      return res.json({ msg: "Acesso negado! Você não é um administrador!" });
+      return res.json({ msg: "Acesso negado, você não é um administrador!" });
     }
 
     next();
   }
 }
 
+ 
 module.exports = ClienteController;
