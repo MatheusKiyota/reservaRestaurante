@@ -1,5 +1,5 @@
 datasource db {
-  provider = "sqlite" // ou "postgresql" / "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -11,9 +11,8 @@ model Usuario {
   id       Int       @id @default(autoincrement())
   nome     String
   email    String    @unique
-  password String
-  tipo     String    // "cliente" ou "adm"
-
+  senha    String
+  tipo     String    
   reservas Reserva[]
 }
 
@@ -33,6 +32,12 @@ model Mesa {
   id        Int       @id @default(autoincrement())
   codigo    String
   n_lugares Int
+  reservas  Reserva[]
+}
 
-  reservas Reserva[]
+model RevokedToken {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  createdAt DateTime @default(now())
+  expiresAt DateTime?
 }
