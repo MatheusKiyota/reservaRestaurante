@@ -39,7 +39,7 @@ class ReservaController {
     }
   }
 
-  static async listarReservasDoUsuario(req, res) {
+  static async listarReservasDoCliente(req, res) {
     const usuarioId = req.usuarioId;
     try {
       const reservas = await client.reserva.findMany({

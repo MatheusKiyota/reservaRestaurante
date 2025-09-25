@@ -1,11 +1,8 @@
 const router = require("express").Router();
-const UsuarioController = require("../controllers/UsuarioController");
+const clienteController = require("../controllers/clienteController");
 
-router.post("/cadastro", UsuarioController.cadastrar);
-router.post("/login", UsuarioController.login);
-router.post("/logout", UsuarioController.logout);
-
-router.get("/perfil", UsuarioController.verificarAutenticacao, UsuarioController.verPerfil);
-router.put("/perfil", UsuarioController.verificarAutenticacao, UsuarioController.editarPerfil);
+router.post("/cadastro", clienteController.cadastrar);
+router.post("/login", clienteController.login);
+router.post("/logout", clienteController.logout);
 
 module.exports = router;
