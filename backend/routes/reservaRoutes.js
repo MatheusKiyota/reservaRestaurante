@@ -6,7 +6,7 @@ const clienteController = require("../controllers/clienteController");
 router.post("/criar", clienteController.verificarAutenticacao, ReservaController.criarReserva);
 
 // ver próprias reservas
-router.get("/meus", clienteController.verificarAutenticacao, ReservaController.listarReservasDoCliente);
+router.get("/minhasReservas", clienteController.verificarAutenticacao, ReservaController.listarReservasDoCliente);
 
 // cancelar reservas
 router.delete("/cancelar/:id", clienteController.verificarAutenticacao, ReservaController.cancelarReserva);

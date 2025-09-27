@@ -12,7 +12,7 @@ model Usuario {
   nome     String
   email    String    @unique
   senha    String
-  tipo     String    
+  isAdmin  Boolean   @default(false)  
   reservas Reserva[]
 }
 

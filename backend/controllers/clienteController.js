@@ -10,14 +10,15 @@ class UsuarioController {
       const salt = bcryptjs.genSaltSync(8);
       const hashSenha = bcryptjs.hashSync(senha, salt);
 
-      const usuario = await client.usuario.create({
-        data: {
-          nome,
-          email,
-          senha: hashSenha,
-          tipo: "cliente", // por padrão
-        },
-      });
+     const usuario = await client.usuario.create({
+       data: {
+       nome,
+       email,
+       senha: hashSenha,
+       isAdmin: false, 
+  },
+});
+
 
       res.json({ usuarioId: usuario.id });
     } catch (err) {

@@ -12,7 +12,7 @@ app.set("view engine", "handlebars");
 
 
 const clienteRoutes = require("./routes/clienteRoutes");
-app.use("/clientes", clienteRoutes);
+app.use("/cliente", clienteRoutes);
 
 const reservaRoutes = require("./routes/reservaRoutes");
 app.use("/reservas", reservaRoutes);
@@ -46,6 +46,6 @@ app.get("/", (req, res) => {
 });
 
 
-app.listen(8000, () => {
-  console.log("Servidor rodando na porta 8000");
+app.listen(8080, () => {
+  console.log("Servidor rodando na porta 8080");
 });
