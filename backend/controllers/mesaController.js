@@ -14,15 +14,6 @@ class MesaController {
     }
   }
 
-  static async listarMesas(req, res) {
-    try {
-      const mesas = await client.mesa.findMany();
-      res.json(mesas);
-    } catch (err) {
-      res.json({ msg: "Erro ao listar mesas", error: err.message });
-    }
-  }
-
   static async verReservasDaMesa(req, res) {
     const { id } = req.params;
     try {
